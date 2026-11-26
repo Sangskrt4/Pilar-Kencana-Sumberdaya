@@ -10,17 +10,18 @@ class DatabaseSeeder extends Seeder
 {
     public function run()
     {
-        // Panggil seeder lowongan
         $this->call([
             JobVacancySeeder::class,
+            TrainingModuleSeeder::class,
         ]);
 
-        // Bikin Akun Admin HRD
-        User::create([
-            'name' => 'Admin HRD',
-            'email' => 'hrd@pks.co.id',
-            'password' => Hash::make('password123'),
-            'role' => 'hrd',
-        ]);
+        User::firstOrCreate(
+            ['email' => 'hrd@pks.co.id'],
+            [
+                'name' => 'Admin HRD',
+                'password' => Hash::make('password123'),
+                'role' => 'hrd',
+            ]
+        );
     }
 }

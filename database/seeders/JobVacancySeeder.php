@@ -113,7 +113,10 @@ class JobVacancySeeder extends Seeder
         ];
 
         foreach ($jobs as $job) {
-            JobVacancy::create($job);
+            JobVacancy::firstOrCreate(
+                ['title' => $job['title'], 'division' => $job['division']],
+                $job
+            );
         }
     }
 }
