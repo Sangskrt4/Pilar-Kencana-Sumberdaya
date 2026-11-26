@@ -1,0 +1,9 @@
+{
+  "$schema": "https://schema.railpack.com",
+  "packages": {
+    "php": "8.3"
+  },
+  "deploy": {
+    "startCommand": "php artisan config:clear && php artisan migrate --force && php artisan db:seed --class=TrainingModuleSeeder --force && php artisan serve --host=0.0.0.0 --port=$PORT"
+  }
+}
